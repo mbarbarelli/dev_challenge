@@ -2,7 +2,7 @@
 
 ## Dev Challenge
 
-### `EncounterController.cls`
+### `EncounterController.cls` Apex class
 
 Provides a data source for the `encounterList` LWC. 
 
