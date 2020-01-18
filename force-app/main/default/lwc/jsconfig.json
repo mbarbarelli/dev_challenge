@@ -3,11 +3,11 @@
         "experimentalDecorators": true,
         "baseUrl": ".",
         "paths": {
-            "c/encounterViewButton": [
-                "encounterViewButton/encounterViewButton.js"
-            ],
             "c/encounterList": [
                 "encounterList/encounterList.js"
+            ],
+            "c/encounterViewButton": [
+                "encounterViewButton/encounterViewButton.js"
             ]
         }
     },
