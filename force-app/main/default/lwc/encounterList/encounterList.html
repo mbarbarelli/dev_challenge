@@ -1,72 +1,14 @@
 <template>
     <lightning-card title="Encounters" icon-name="custom:custom94">
-        <div class="slds-card__body_inner">
-            <!-- Start encounter list -->
+        <lightning-datatable data={data} columns={columns} key-field="Id">
+        </lightning-datatable>
 
-            <lightning-input type="search" onchange={handleSearchTermChange} variant="label-hidden"
-                class="slds-m-bottom_small" label="Search" placeholder="Search for encounter by health system member"
-                value={searchTerm}>
-            </lightning-input>
-
-            <table class="slds-table">
-                <thead>
-                    <tr class="slds-line-height_reset">
-                        <th class="slds-text-title_caps" scope="col">
-                            <div class="slds-truncate">Account</div>
-                        </th>
-                        <th class="slds-text-title_caps" scope="col">
-                            <div class="slds-truncate">Health System Member</div>
-                        </th>
-                        <th class="slds-text-title_caps" scope="col">
-                            <div class="slds-truncate">Admit</div>
-                        </th>
-                        <th class="slds-text-title_caps" scope="col">
-                            <div class="slds-truncate">Balance</div>
-                        </th>
-                        <th class="slds-text-title_caps" scope="col">
-                            <div class="slds-truncate">Type</div>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <template if:true={encounters.data}>
-                        <template for:each={encounters.data} for:item="encounter">
-                            <tr class="slds-hint-parent" key={encounter.Id}>
-                                <td>
-                                    <c-encounter-view-button encounter={encounter}
-                                        onencounterview={handleEncounterView}></c-encounter-view-button>
-                                    <div class="slds-truncate" key={encounter.Id}>
-                                        <span class="account-highlight">{encounter.Account_Number__c}</span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="slds-truncate" key={encounter.Id}>
-                                        <span class="hsm-column">{encounter.HealthSystemMember__r.Name}</span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="slds-truncate" key={encounter.Id}>{encounter.Admission_Date__c}</div>
-                                </td>
-                                <td>
-                                    <div class="slds-truncate" key={encounter.Id}>{encounter.Account_Balance__c}</div>
-                                </td>
-                                <td>
-                                    <div class="slds-truncate" key={encounter.Id}>{encounter.Patient_Type__c}</div>
-                                </td>
-                            </tr>
-                        </template>
-                    </template>
-                </tbody>
-            </table>
-            <!-- End encounter list -->
-
-            <!-- Data failed to load -->
-            <template if:true={encounters.error}>
-                <div class="slds-text-color_error">
-                    An error occurred while loading the encounter list
-                </div>
-            </template>
-
-        </div>
+        <!-- Data failed to load -->
+        <template if:true={error}>
+            <div class="slds-text-color_error">
+                An error occurred while loading the encounter list
+            </div>
+        </template>
+        
     </lightning-card>
 </template>
