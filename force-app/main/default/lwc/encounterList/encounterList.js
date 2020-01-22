@@ -33,12 +33,8 @@ export default class encounterList extends NavigationMixin(LightningElement) {
     @wire(getAllEncounters, { HealthCareMemberId: '$recordId' })
     encounters({ error, data }) {
         if (data) {
-            window.console.log(this.recordId);
-            window.console.log(data.data);
             this.data = data;
         } else if (error) {
-            window.console.log(error);
-            window.console.log(this.recordId);
             this.error = error;
         }
     }
